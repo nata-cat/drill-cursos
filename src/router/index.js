@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import administracionView from '../views/administracionView.vue'
+import notFound from '../views/notFoundView.vue'
 
 Vue.use(VueRouter)
 
@@ -11,6 +13,11 @@ const routes = [
     component: HomeView
   },
   {
+    path: '/administracion',
+    name: 'administracion',
+    component: administracionView
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -19,7 +26,13 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
     }
-  }
+  },
+  {
+    path: '/:catchAll*',
+    name: 'notFound',
+    component: notFound
+  },
+
 ]
 
 const router = new VueRouter({

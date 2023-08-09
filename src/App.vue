@@ -1,12 +1,47 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+
+    <!--NavBar-->
+    <div>
+      <b-navbar type="dark" id="barraNavegacion">
+        <b-navbar-nav>
+          <b-nav-item href="#"> <img id="imagenLogo" src="../src/assets/corporativos-uandes.webp"> </b-nav-item>
+          <b-nav-item href="#"><router-link to="/">Home</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link to="/about">Nosotros</router-link></b-nav-item> 
+        <b-nav-item href="#"><router-link to="/administracion">Administración</router-link></b-nav-item>         
+        </b-navbar-nav>
+      </b-navbar>
+    </div>
+
+
     <router-view/>
   </div>
 </template>
+
+<script>
+import { mapActions } from 'vuex';
+
+export default{
+  name:'',
+  data(){
+    return{
+
+    }
+  },
+  props:{},
+  components:{},
+  methods:{
+    ...mapActions('InfoCursos', ['consultarCursos', 'consultarDatosTabla']),
+  },
+  computed:{},
+  watch:{},
+  beforeMount(){
+    this.consultarCursos();
+    this.consultarDatosTabla();
+  }
+
+}
+</script>
 
 <style>
 #app {
@@ -23,10 +58,20 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #707070;
+  text-decoration: none;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #950000;
+  text-decoration: underline;
+}
+
+#imagenLogo{
+  width: 10em;
+}
+
+#barraNavegacion{
+  background-color: rgb(191, 188, 188);
 }
 </style>
